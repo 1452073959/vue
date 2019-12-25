@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.h1{
+				color: red;
+			}
+			.h2{
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="hdcms">
+			{{n+2}}
+			{{n}}
+			<h1 v-once>{{n}}</h1>
+			<h1 v-text="n"></h1>
+			<p v-bind:class="'h'+n"> 后盾人 </p>
+			<div class="mui-input-row">
+				<label>Input</label>
+				<input type="text" placeholder="普通输入框" v-model="n">
+				<input type="radio" name="" id="" value="1" v-model="n"/>红色
+				<input type="radio" name="" id="" value="2" v-model="n"/>黄色
+			</div>
+			
+		</div>
+
+		<script>
+			var app = new Vue({
+				el: '#hdcms',
+				data: {
+					n:1,
+				}
+			})
+		</script>
+
+	</body>
+</html>
