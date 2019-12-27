@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.blue{
+			color: blue;
+		}
+		.font{
+			font-size: 1.5rem;
+		}
+		.yellow{
+			color: yellow;
+		}
+		.black{
+			color: #dddddd;
+		}
+	</style>
+</head>
+<body>
+
+<div id="app">
+<p class=""  v-bind:class="'font'">对象操作</p>
+<p class=""  v-bind:class="font">对象操作2</p>
+<p class=""  v-bind:class="{font:true,blue:true}">对象操作3</p>
+<p class=""  v-bind:class="['blue','font']">数组</p>
+<p class=""  v-bind:class="[blue]">数组</p>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+			font:{
+				font:true,
+				yellow:true,
+			},
+			blue:'black',
+        }
+    })
+</script>
+</body>
+</html>

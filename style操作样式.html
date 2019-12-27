@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+
+		<div id="app">
+			<p :style="{color:'red',fontSize:px+'px'}">数组</p>
+			<input type="text" v-model="px" name="" id="" value="" />
+			<p :style="pl">数组</p>
+			<p :style="[pl]">数组</p>
+
+		</div>
+
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					pl: {
+						color: 'blue',
+						fontSize: '3rem',
+					},
+					px: 6
+
+				}
+			})
+		</script>
+	</body>
+</html>

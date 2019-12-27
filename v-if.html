@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+	<input type="checkbox" name="" id="" value="" v-model="message" />
+	<label v-if="message==true">请先接受</label>
+	<button v-else>注册</button>
+	<hr>
+	<input type="text" v-model="age" />{{age}}
+	<span v-if="age<12">小孩</span>
+	<span v-else-if="12<age&&age<20">青年</span>
+	<span v-else-if="20<age&&age<50">壮年</span>
+	<span v-else>老人</span>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '',
+			age:''
+        }
+    })
+</script>
+</body>
+</html>
