@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- //循环使用的是计算属性的值 -->
+<div id="app">
+
+<ul v-for="v in st">
+	<li>{{v.name}}__{{v.sex}}</li>
+</ul>
+<input type="radio" v-model="type" value="男"/>男
+<input type="radio" v-model="type" value="女"/>女
+<input type="radio" v-model="type" value="全部"/ >全部
+{{type}}
+
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+		
+		computed:{
+			st() {
+				if(this.type=='全部'){
+					return this.stu;
+				}else{
+					var that=this.type;
+					console.log(that);
+					return this.stu.filter(function(v){
+						return v.sex==that;
+					});
+				}
+			}
+		},
+        data: {
+			type:'全部',
+			stu:[
+				{name:'张三',sex:'男'},
+				{name:'张二',sex:'男'},
+				{name:'张一',sex:'女'},
+				{name:'张零',sex:'女'},
+			]
+        }
+});
+</script>
+</body>
+</html>

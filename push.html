@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<ul v-for="(v,k) of da">
+	<li>{{k+1}}__{{v.content}}</li><button v-on:click="remove(k)">删除</button>
+</ul>
+<input type="text" v-model="ne1w"/ value="ne1w">{{ne1w}}
+<button v-on:click="get()">新增到后面</button>
+<button v-on:click="unshift()">新增到前面</button>
+<button v-on:click="pop()">删除最后一条</button>
+<button v-on:click="shift()">删除第一条</button>
+<button v-on:click="sort()">排序</button>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+		methods:{
+			get: function () {
+				console.log(this.ne1w);
+				this.da.push({content:this.ne1w});
+				this.ne1w='';
+			},
+			unshift(){
+				this.da.unshift({content:this.ne1w});
+			},
+			pop(){
+				this.da.pop({content:this.ne1w});
+			},
+			shift(){
+				this.da.shift({content:this.ne1w});
+			},
+			remove(k){
+				this.da.splice(k,1);
+			},
+			//排序
+			sort(k){
+				console.log();
+				this.da.sort(function(a,b){
+					return a.k>b.k
+				});
+			}
+			//反转
+			// reverse()
+			
+		},
+        data: {
+			da:[
+				{content:'第一条'},
+				{content:'跌了他'}
+			],
+			ne1w:''
+        }
+    })
+</script>
+</body>
+</html>
