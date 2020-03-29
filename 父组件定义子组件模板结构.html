@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="hdcms">
+    <hd-list :data="news">	
+        <template scope="v">
+			{{v}}
+            <li>
+                <h2 v-bind:style="{color:'blue'}">{{v.fid.title}}</h2>
+            </li>
+        </template>
+    </hd-list>
+</div>
+<script type="text/x-template" id="hdList">
+    <ul>
+       <slot v-for="v1 in data" :fid="v1" color="ed"></slot>
+    </ul>
+</script>
+<script>
+    var hdList = {
+        template: "#hdList",
+        props:['data']
+    };
+    new Vue({
+        el: '#hdcms',
+        components: {hdList},
+        data:{
+            news:[
+                {title:'hdcms'},
+                {title:'后盾人'}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

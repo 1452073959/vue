@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+ <p v-for="item in new1">
+	 {{item.title}}
+ </p>
+ <hr>
+
+ <my :bo="new1" :cc="bo" dd="9898"></my>
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        components: {
+			my:{
+				//props可以获取属性的值
+				props:['cc','bo','dd'],
+				template:'<div :lol="bo" :sql="cc">{{cc}}{{bo}}{{dd}}</div>',
+			},
+			
+		},
+        data: {
+			new1:[
+				{title:'第33个'},
+				{title:'第11个'},
+				{title:'第22个'},
+			],
+			bo:true,
+			computed:{
+				totalPrice(){
+					var sum='';
+					this.goods.forEach((v)=>{
+						sum==v.title;
+					})
+					return sum;
+				}
+			}
+		}
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+<span v-tar="1">
+	自定义指令
+</span>
+    <span v-stara="color">标题</span>
+	<br>
+    <span v-tar>标题2</span>
+<input type="text" v-model="color" v-fouc/>
+</div>
+
+<script>
+	Vue.directive('tar',{
+		bind(el,bind){
+			// console.log(bind);
+			// console.log(el);
+			el.style.background="red";
+		}
+		
+	})
+    var app = new Vue({
+        el: '#app',
+		data: {
+		    color: 'red'
+		},
+		directives:{
+			stara:function(el,bind){
+				var color = bind.value ? bind.value : 'red';
+				el.style.cssText = "color:" + color;
+				// console.log(bind);
+				// console.log(el);
+			},
+			fouc:{
+                inserted(el, bind){
+					console.log(bind);
+					console.log(el);
+                    el.focus();   
+                }
+			}
+		},
+
+    })
+</script>
+</body>
+</html>

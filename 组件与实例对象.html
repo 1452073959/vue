@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+	<myzujian></myzujian>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+		// template:'<div @click="cli">2222222222</div>',
+		components:{
+			myzujian:{
+				template:'<div @click="cli">ssssssss</div>',
+				data(){
+				return	{
+					msg:'组件就是一个实例对象,与根组件有差异1.自定义组件没有el2.自定义组件中的data必须是个方法,使用返回值保存'
+				}
+				},
+				methods:{
+					cli(){
+						alert(this.msg)
+					}
+				}
+			}
+		}
+    })
+</script>
+</body>
+</html>

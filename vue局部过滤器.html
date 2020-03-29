@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+		<input type="text" v-model="message" />
+		{{message|num|dx}}
+</div>
+
+<script>
+	//全局过滤器
+	Vue.filter('dx',function(val){
+		return val.toUpperCase();
+	})
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            name:'朱晨晨百度'
+        },
+		//局部过滤器
+		filters:{
+			num:function(val){
+				var reg =/\d/g;
+				return val.replace(reg,'*');
+			}
+		}
+    })
+</script>
+</body>
+</html>
