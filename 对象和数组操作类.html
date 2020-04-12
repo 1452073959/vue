@@ -22,11 +22,13 @@
 <body>
 
 <div id="app">
+	//
 <p class=""  v-bind:class="'font'">对象操作</p>
 <p class=""  v-bind:class="font">对象操作2</p>
 <p class=""  v-bind:class="{font:true,blue:true}">对象操作3</p>
-<p class=""  v-bind:class="['blue','font']">数组</p>
-<p class=""  v-bind:class="[blue]">数组</p>
+<p class=""  v-bind:class="['font']">数组</p>
+<p class=""  v-bind:class="[blue,font]">数组</p>
+<p class=""  v-bind:class="class1()">方法</p>
 </div>
 
 <script>
@@ -37,8 +39,15 @@
 				font:true,
 				yellow:true,
 			},
-			blue:'black',
-        }
+			blue:'blue',
+        },
+		methods:{
+			class1:function()
+			{
+				return this.blue;
+			}
+			
+		}
     })
 </script>
 </body>

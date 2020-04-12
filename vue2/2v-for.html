@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+		<li v-for="(item,key) in array">
+			{{item}}{{key}}
+		</li>
+		<li v-for="(v,key,index) in object">
+			{{v}}__{{key}}__{{index}}
+		</li>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+			array:[
+				{id:1,name:'测试循环1'},
+				{id:2,name:'测试循环2'},
+				{id:3,name:'测试循环3'}
+			],
+			object:{
+				name:'姓名',
+				age:30,
+				sex:'未知'
+			}
+        }
+    })
+</script>
+</body>
+</html>

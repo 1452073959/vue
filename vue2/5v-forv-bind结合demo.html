@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+
+		<style>
+			.red {
+				color: #FF0000;
+			}
+		</style>
+		<div id="app">
+			<ul>
+				<li @click="change(index,$event)" v-bind:class="{red:current == index}" v-for="(item,index) in movie">
+					{{item}}__{{index}}
+				</li>
+					
+			</ul>
+			{{heji}}
+		</div>
+
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					current:'',
+					movie: ['1111', '2222', '3333'],
+					dpl:[
+						{yi:'123',er:12},
+						{yi:'222',er:24},
+					]
+				},
+				methods: {
+					change: function(index,event) {
+						console.log(index)
+						console.log(event)
+						this.current = index
+					}
+				},
+				computed:{
+					heji:function(){
+						let heji=0;
+						// for(let i=0;i<this.dpl.length;i++)
+						// {
+						// 	 heji+=this.dpl[i].er
+						// }
+						
+						for(let i in this.dpl){
+							heji+=this.dpl[i].er
+							console.log(i);
+						}
+						return heji;
+						
+
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+		<h2>当前计数:{{num}}</h2>
+		<button @click="add()">+</button>
+		<button @click="jian">-</button>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {     
+            num:0
+        },
+		methods:{
+			add(){
+				this.num++
+			},
+			jian: function(){
+				this.num--
+			},
+		}
+    })
+</script>
+</body>
+</html>
