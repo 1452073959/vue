@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+	<h1 v-if="no">购物车为空</h1>
+	<div v-else>
+		
+
+	<table border="1" cellpadding="5" cellspacing="0" >
+	<tr>
+		<td>书名</td>
+		<td>价格</td>
+		<td>数量</td>
+		<td>操作</td>
+	</tr>
+	<tr v-for="(item,key) in book">
+		<td>{{item.name}}</td>
+		<td>{{item.price}}</td>
+		<td>
+		<button @click="item.num--" :disabled="item.num<=0">-</button>
+		{{item.num}}
+		<button @click="item.num++">+</button>
+		</td>
+		<td><button @click="del(key)">删除{{key}}</button></td>
+	</tr>
+	{{total}}
+	</table>
+		</div>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+		totalPrice:0,
+		no:false,
+        book:[
+			  {name:'书名1',price:100,num:1},
+			  {name:'书名2',price:200,num:2},
+			  {name:'书名3',price:300,num:3}
+		  ]
+        },
+		computed:{
+			total(){
+/* 				this.totalPrice=0;
+				for(let i=0; i<this.book.length;i++){
+					console.log(this.book[i].price);
+					this.totalPrice+=this.book[i].price*this.book[i].num;
+				}
+				return this.totalPrice; */
+				let totalPrice = 0
+/* 				for (let i = 0; i < this.book.length; i++) {
+				  totalPrice += this.book[i].price * this.book[i].num
+				} */
+				// for (item of this.book) {
+				//   totalPrice +=item.price*item.num
+				// }
+				// for (let i in this.book) {
+				//   totalPrice +=this.book[i].price*this.book[i].num;
+				// }
+				this.book.forEach((v)=>{
+				    totalPrice+=v.num*v.price;
+				})
+				return totalPrice;
+					
+			}
+		},
+		methods:{
+			del(key){
+				console.log(key)
+				this.book.splice(key,1);	
+				if(this.book.length==0){
+					this.no=true;
+				}
+			}
+		}
+    })
+</script>
+</body>
+</html>
